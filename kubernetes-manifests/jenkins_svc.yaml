@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2024-11-26T22:40:52Z"
+  labels:
+    app: jenkins-svc
+  name: jenkins-svc
+  namespace: jenkins
+  resourceVersion: "2867"
+  uid: f712180e-1563-47bb-8856-dc6f6a16750d
+spec:
+  clusterIP: 10.110.237.20
+  clusterIPs:
+  - 10.110.237.20
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 8080-8080
+    nodePort: 30577
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: jenkins
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

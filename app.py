@@ -1,12 +1,22 @@
 # Import the Flask class from the flask module
 from flask import Flask 
+from utilities.testclass import *
+import sys
 
 # Create an instance of the Flask class
 # '__name__' is a special variable in Python that represents the name of the current module.
 app = Flask(__name__) 
+
+
+@app.route("/hello/<name>")
+def hello(name):
+    ns = sayhello(name)
+    return  (ns.sayfun(name))
+
 @app.route('/health')
 def health():
-    return "I'm healthy"
+    return f"{sys.path}"
+
 # Define a route for the root URL ('/')
 # This means that when a user accesses 'http://<server-ip>/', this function will run.
 @app.route('/')

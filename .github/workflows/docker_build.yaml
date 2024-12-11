@@ -1,0 +1,21 @@
+name: Docker image build
+on:
+  push:
+    branches:
+      - main
+      - working-branch
+    paths:
+      - '**/app.py'
+      - '**/Dockerfile'
+      - '**/requirments.txt'
+jobs:
+  docker_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Show modified files
+        run: |
+          echo "Changes detected in the parent folder!"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+

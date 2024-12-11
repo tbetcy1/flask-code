@@ -9,13 +9,23 @@ on:
       - '**/Dockerfile'
       - '**/requirments.txt'
 jobs:
-  docker_build:
+  docker_version_check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Show modified files
+      - name: Docker Version Check
         run: |
-          echo "Changes detected in the parent folder!"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          echo "Checking docker Version"
+          docker version
+      - name: Creating image tag
+        run: |
+          echo "Generating Docker image Tag"
+          Image_tag=$(date +%Y%m)
+          echo "$(Image_tag)"
+  docker_build:
+    runs-on: ubuntu-latest
+    
+
+  
 

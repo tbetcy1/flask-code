@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Show modified files
+      - name: Docker Version Check
         run: |
-          echo "Changes detected in the parent folder!"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          echo "Checking docker Version"
+          docker version
 

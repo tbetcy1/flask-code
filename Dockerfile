@@ -10,4 +10,4 @@ RUN pip install -r requirments.txt
 
 ENTRYPOINT [ "python3","app.py" ]
 
-CMD ["flask", "run", "--host", "0.0.0.0" ]
+#CMD ["flask", "run", "--host", "0.0.0.0" ]

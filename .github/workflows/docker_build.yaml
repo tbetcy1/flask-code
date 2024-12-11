@@ -4,10 +4,10 @@ on:
     branches:
       - main
       - working-branch
-    paths:
-      - '**/app.py'
-      - '**/Dockerfile'
-      - '**/requirments.txt'
+    # paths:
+    #   - '**/app.py'
+    #   - '**/Dockerfile'
+    #   - '**/requirments.txt'
 jobs:
   docker_version_check:
     runs-on: ubuntu-latest

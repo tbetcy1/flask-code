@@ -30,11 +30,11 @@ jobs:
       #     echo "Generating Docker image Tag"
       #     Image_tag=$(date +%Y%m)
       #     echo "$(Image_tag)"
-  docker_build:
-    runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
+  # docker_build:
+  #   runs-on: ubuntu-latest
+  #     steps:
+  #       - name: Checkout code
+  #         uses: actions/checkout@v3
 
 
 

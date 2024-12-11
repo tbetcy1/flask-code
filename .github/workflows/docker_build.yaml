@@ -9,7 +9,7 @@ on:
       - '**/Dockerfile'
       - '**/requirments.txt'
 jobs:
-  docker_build:
+  docker_version_check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,4 +18,14 @@ jobs:
         run: |
           echo "Checking docker Version"
           docker version
+      - name: Creating image tag
+        run: |
+          echo "Generating Docker image Tag"
+          Image_tag=$(date +%Y%m)
+          echo "$(Image_tag)"
+  docker_build:
+    runs-on: ubuntu-latest
+    
+
+  
 

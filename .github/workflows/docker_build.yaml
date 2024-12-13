@@ -40,11 +40,11 @@ jobs:
         - name: Listing all the variables
           needs: docker_version_check
           run: |
-          echo "Image tag will be {{env.IMAGE_TAG}}"
-          echo "User is pushed the chnages is {{GITHUB_ACTOR}}"
+            echo "Image tag will be {{env.IMAGE_TAG}}"
+            echo "User is pushed the chnages is {{GITHUB_ACTOR}}"
         - name: Docker Login
           run: |
-          echo "Docker user will be {{secrets.DOCKER_USERNAME}}"
+            echo "Docker user will be {{secrets.DOCKER_USERNAME}}"
 
 
 

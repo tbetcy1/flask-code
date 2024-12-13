@@ -24,17 +24,18 @@ jobs:
           echo "Generating Docker image tag..."
           IMAGE_TAG=$(date +%Y%m%d%H%M%S)
           echo "::set-output name=image_tag::$IMAGE_TAG"
+          printenv
 
       # - name: Creating image tag
       #   run: |
       #     echo "Generating Docker image Tag"
       #     Image_tag=$(date +%Y%m)
       #     echo "$(Image_tag)"
-  # docker_build:
-  #   runs-on: ubuntu-latest
-  #     steps:
-  #       - name: Checkout code
-  #         uses: actions/checkout@v3
+  docker_build:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
 
 
 

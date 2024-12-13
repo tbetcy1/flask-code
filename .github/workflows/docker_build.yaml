@@ -23,10 +23,12 @@ jobs:
         run: |
           echo "Generating Docker image tag..."
           #The ::set-output name=<output_name>::<value> syntax is used to define outputs within a step
-          echo "IMAGE_TAG=v$(date +%Y-%m) " >>  $GITHUB_ENV
+          echo "IMAGE_TAG=v$(date +%Y-%m)" >>  $GITHUB_ENV
           echo "Docker Repository will be tbetcy/flask_test"
           echo "repo=tbetcy/flask_test" >> $GITHUB_ENV
-          echo "${{env.IMAGE_TAG}} and ${{ env.repo}}"
+      - name: Check env variables
+        run: |
+          echo "$IMAGE_TAG and $repo"
           printenv
 
       # - name: Creating image tag

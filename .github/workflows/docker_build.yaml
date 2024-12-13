@@ -22,7 +22,9 @@ jobs:
         id: set_tag
         run: |
           echo "Generating Docker image tag..."
-          IMAGE_TAG=$(date +%Y%m%d%H%M%S)
+          IMAGE_TAG=$(date +%Y%m%d%H%M%S) 
+          #The ::set-output name=<output_name>::<value> syntax is used to define outputs within a step
+          echo "$IMAGE_TAG"
           echo "::set-output name=image_tag::$IMAGE_TAG"
           printenv
 

@@ -26,6 +26,7 @@ jobs:
           echo "IMAGE_TAG=v$(date +%Y-%m) " >>  $GITHUB_ENV
           echo "Docker Repository will be tbetcy/flask_test"
           echo "repo=tbetcy/flask_test" >> $GITHUB_ENV
+          echo "$IMAGE_TAG and $repo"
           printenv
 
       # - name: Creating image tag

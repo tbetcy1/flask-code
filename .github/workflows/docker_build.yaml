@@ -42,14 +42,14 @@ jobs:
         - name: Listing all the variables
           run: |
             echo "Image tag will be ${{env.IMAGE_TAG}}"
-            echo "User is pushed the chnages is ${{GITHUB_ACTOR}}"
+            echo "User is pushed the chnages is ${{env.GITHUB_ACTOR}}"
         - name: Docker Login
           run: |
-            echo "Docker user will be ${{secrets.DOCKER_USERNAME}}"
-            docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_KEY}}
+            echo "Docker user will be ${{ secrets.DOCKER_USERNAME }}"
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_KEY }}
         - name: Docker build
           run: |
-            echo "docker build -f ${{env.repo}}:${{env.IMAGE_TAG}}
+            echo "docker build -t . ${{env.repo}}:${{env.IMAGE_TAG}}
 
 
 

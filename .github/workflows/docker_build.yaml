@@ -22,10 +22,9 @@ jobs:
         id: set_tag
         run: |
           echo "Generating Docker image tag..."
-          IMAGE_TAG=$(date +%Y%m%d%H%M%S) 
+          IMAGE_TAG=v$(date +%Y-%m) 
           #The ::set-output name=<output_name>::<value> syntax is used to define outputs within a step
-          echo "$IMAGE_TAG"
-          echo "::set-output name=image_tag::$IMAGE_TAG"
+          echo "$IMAGE_TAG" >>  $GITHUB_ENV
           printenv
 
       # - name: Creating image tag
@@ -38,6 +37,14 @@ jobs:
     steps:
         - name: Checkout code
           uses: actions/checkout@v3
+        - name: Listing all the variables
+          needs: docker_version_check
+          run: |
+          echo "Image tag will be {{env.IMAGE_TAG}}"
+          echo "User is pushed the chnages is {{GITHUB_ACTOR}}"
+        - name: Docker Login
+          run: |
+          echo "Docker user will be {{secrets.DOCKER_USERNAME}}"
 
 
 

@@ -1,4 +1,4 @@
-name: Docker image build
+name: Docker_image_build
 on:
   push:
     branches:
@@ -33,7 +33,7 @@ jobs:
       #     echo "$(Image_tag)"
   docker_build:
     runs-on: ubuntu-latest
-      steps:
+    steps:
         - name: Checkout code
           uses: actions/checkout@v3
 

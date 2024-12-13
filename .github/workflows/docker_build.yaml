@@ -46,7 +46,7 @@ jobs:
         - name: Docker Login
           run: |
             echo "Docker user will be ${{ secrets.DOCKER_USERNAME }}"
-            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_KEY }}
+            echo "${{ secrets.DOCKER_KEY }}"| docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
         - name: Docker build
           run: |
             echo "docker build -t . ${{env.repo}}:${{env.IMAGE_TAG}}"

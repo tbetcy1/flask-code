@@ -11,6 +11,9 @@ on:
 jobs:
   docker_version_check:
     runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.set_tag.outputs.IMAGE_TAG}}
+      repo: ${{ steps.set_tag.outputs.repo}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

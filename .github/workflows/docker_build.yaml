@@ -34,11 +34,11 @@ jobs:
       #     echo "$(Image_tag)"
   docker_build:
     runs-on: ubuntu-latest
+    needs: docker_version_check
     steps:
         - name: Checkout code
           uses: actions/checkout@v3
         - name: Listing all the variables
-          needs: docker_version_check
           run: |
             echo "Image tag will be {{env.IMAGE_TAG}}"
             echo "User is pushed the chnages is {{GITHUB_ACTOR}}"

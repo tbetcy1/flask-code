@@ -49,7 +49,7 @@ jobs:
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_KEY }}
         - name: Docker build
           run: |
-            echo "docker build -t . ${{env.repo}}:${{env.IMAGE_TAG}}
+            echo "docker build -t . ${{env.repo}}:${{env.IMAGE_TAG}}"
 
 
 

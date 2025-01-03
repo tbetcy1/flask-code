@@ -1,16 +1,19 @@
-name: Docker image build
+name: Docker_image_build
 on:
   push:
     branches:
       - main
       - working-branch
-    paths:
-      - '**/app.py'
-      - '**/Dockerfile'
-      - '**/requirments.txt'
+    # paths:
+    #   - '**/app.py'
+    #   - '**/Dockerfile'
+    #   - '**/requirments.txt'
 jobs:
   docker_version_check:
     runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.set_tag.outputs.IMAGE_TAG}}
+      repo: ${{ steps.set_tag.outputs.repo}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,14 +21,43 @@ jobs:
         run: |
           echo "Checking docker Version"
           docker version
-      - name: Creating image tag
+      - name: Set Docker Image Tag and repository details
+        id: set_tag
         run: |
-          echo "Generating Docker image Tag"
-          Image_tag=$(date +%Y%m)
-          echo "$(Image_tag)"
+          echo "Generating Docker image tag..."
+          #The ::set-output name=<output_name>::<value> syntax is used to define outputs within a step
+          echo "IMAGE_TAG=v$(date +%Y-%m)" >>  $GITHUB_ENV
+          echo "Docker Repository will be tbetcy/flask_test"
+          echo "repo=tbetcy/flask_test" >> $GITHUB_ENV
+      - name: Check env variables
+        run: |
+          echo "$IMAGE_TAG and $repo"
+          printenv
+
+      # - name: Creating image tag
+      #   run: |
+      #     echo "Generating Docker image Tag"
+      #     Image_tag=$(date +%Y%m)
+      #     echo "$(Image_tag)"
   docker_build:
     runs-on: ubuntu-latest
-    
+    needs: docker_version_check
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+        - name: Listing all the variables
+          run: |
+            echo "Image tag will be ${{needs.set_tag.outputs.IMAGE_TAG}}"
+            echo "User is pushed the chnages is $GITHUB_ACTOR"
+        - name: Docker Login
+          run: |
+            echo "Docker user will be ${{ secrets.DOCKER_USERNAME }}"
+            echo "${{ secrets.DOCKER_KEY }}"| docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        - name: Docker build
+          run: |
+            echo "docker build -t . ${{env.repo}}:${{env.IMAGE_TAG}}"
+
+
 
   
 

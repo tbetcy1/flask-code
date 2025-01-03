@@ -1,4 +1,4 @@
-****Basic Flask Application with GitHub Actions & Docker Integration****
+**Basic Flask Application with GitHub Actions & Docker Integration**
 
 Overview
 

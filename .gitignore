@@ -1,2 +1,2 @@
 main.tf
-secret*
+flask-code/secret.json

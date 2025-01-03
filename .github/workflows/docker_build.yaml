@@ -56,7 +56,7 @@ jobs:
         - name: Docker build
           run: |
             echo "docker build -t . ${{env.repo}}:${{env.IMAGE_TAG}}"
-            docker build -t tbetcy/flask_test:latest; docker push tbetcy/flask_test:latest
+            docker build -t tbetcy/flask_test:latest .; docker push tbetcy/flask_test:latest
             
 
 

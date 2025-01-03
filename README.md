@@ -10,5 +10,5 @@ Create a "secret.json" file for all the tokens
 
 ****FOR Currency Check****
 
-Use prifix in below Format http://127.0.0.1:5001/forex/<FromCurrency>/<tocurrency>
+Use prifix in below Format http://127.0.0.1:5001/forex/FromCurrency/tocurrency
 in tocurrency one can provide multpile currency with comma seperated.
